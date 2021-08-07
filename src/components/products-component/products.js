@@ -1,4 +1,5 @@
 import Product from "../product-component/product";
+import './products.css';
 
 const Products = () => {
     return (
