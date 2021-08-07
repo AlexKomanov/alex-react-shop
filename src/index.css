@@ -164,6 +164,12 @@ h1 {
     flex: 1;
 }
 
+h2 {
+    font-size: 22px;
+    font-weight: 300;
+    flex: 1;
+}
+
 h5 {
     font-weight: 500;
     line-height: 1.7em;
