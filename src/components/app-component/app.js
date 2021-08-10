@@ -1,17 +1,30 @@
 import Header from "../header-component/header";
 import Products from "../products-component/products";
-import allProducts from '../../products.json';
 import './app.css';
-import {useState} from "react";
+import Spinner from "../spinner-component/spinner";
+import { useState, useEffect } from "react";
 
 const App = () => {
-    const [products, setProducts] = useState(allProducts);
-    const [filteredProducts, setFilteredProducts] = useState(products);
+
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [spinner, setSpinner] = useState(false);
+
+    useEffect(() => {
+        setSpinner((prev) => !prev);
+        fetch("https://fakestoreapi.com/products")
+            .then((response) => response.json())
+            .then((data) => {
+                setProducts(data);
+                setFilteredProducts(data);
+                setSpinner((prev) => !prev);
+            });
+    }, [])
 
     return (
         <div>
             <Header products={products} setProducts={setFilteredProducts}/>
-            <Products products={filteredProducts}/>
+            {spinner ? <Spinner/> : <Products products={filteredProducts}/>}
         </div>
     );
 };
