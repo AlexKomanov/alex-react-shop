@@ -1,8 +1,8 @@
 import './product.css';
 
-const Product = ({ id, title, price, description, category, image}) => {
+const Product = ({ title, price, description, category, image}) => {
     return (
-        <div className="product-card" key={id}>
+        <div className="product-card">
             <div className="product-image">
                 <img src={image} alt={title}/>
             </div>

@@ -3,9 +3,9 @@ import './products.css';
 
 const Products = ({products}) => {
     const elements = products.map((product) => {
-        const {...productProps} = product;
+        const {id, ...productProps} = product;
         return (
-            <Product {...productProps}/>
+            <Product key={id} {...productProps} />
         )
     })
     return (
